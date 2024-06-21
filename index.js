@@ -22,7 +22,6 @@ app.get("/", (req, res) => {
 // socket.io
 io.on("connection", (socket) => {
   socket.on("user-message", (msg) => {
-    // console.log(msg);
     io.emit("user-message", msg);
   });
 });
