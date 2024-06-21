@@ -56,4 +56,8 @@ router.post(
   }
 );
 
+router.post("/messages", async (req, res) => {
+  res.status(200);
+});
+
 module.exports = router;

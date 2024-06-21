@@ -24,7 +24,7 @@ router.post("/signup", validateSignupBody, existingUser, async (req, res) => {
   const hashedPW = await bcrypt.hash(password, 10);
   const insertId = await createUser(name, deviceId, phone, hashedPW);
 
-  const token = jwt.sign({ userId: insertId }, "badSecret");
+  const token = jwt.sign({ userId: insertId }, process.env.JWT_SECRET);
 
   res.status(200).json({
     message: "User created successfully",
@@ -41,7 +41,7 @@ router.post("/signin", validateSigninBody, async (req, res) => {
     // checking the password
     const match = await bcrypt.compare(password, user.password);
     if (match) {
-      const token = jwt.sign({ userId: user.userId }, "badSecret");
+      const token = jwt.sign({ userId: user.userId }, process.env.JWT_SECRET);
       return res.status(200).json({
         token,
       });

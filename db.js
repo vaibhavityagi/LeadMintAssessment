@@ -1,18 +1,14 @@
+require("dotenv").config();
 const mysql = require("mysql2");
 
 const pool = mysql
   .createPool({
-    host: "127.0.0.1",
-    user: "root",
-    password: "password",
-    database: "leadMint",
+    host: process.env.HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DATABASE,
   })
   .promise();
-
-const getAll = async () => {
-  const [result] = await pool.query("SELECT * FROM users");
-  console.log(result[0]);
-};
 
 const findUser = async (phone) => {
   const [rows] = await pool.query(`SELECT * FROM users WHERE phone = ?`, [
