@@ -6,7 +6,7 @@
 
 ## API Endpoints
 
-# For user
+### For user
 
     - /api/user/signup
     - /api/user/signin
@@ -14,7 +14,7 @@
     - /api/user/friend-requests
     - /api/user/friend-requests-accept
 
-# For chatrooms
+### For chatrooms
 
     - /api/chatrooms
     - /api/chatrooms/join/:roomId
@@ -25,7 +25,7 @@
     - validation using zod
     - password hashing using bcryt
 
-### Technologies used
+## Technologies used
 
     - Express: for server creaction
     - MySQL: database used
